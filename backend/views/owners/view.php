@@ -33,8 +33,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'reestr_id',
             'user_id',
             'ownership_share',
-            'psprt_series',
-            'psprt_given_by',
+            [
+                'attribute' => 'psprt_series',
+                'value' => function ($model) {
+                    return Yii::$app->security->decryptByKey(utf8_decode($model->psprt_series), 'key1');
+
+                },
+            ],
+            [
+                'attribute' => 'psprt_given_by',
+                'value' => function ($model) {
+                    return Yii::$app->security->decryptByKey(utf8_decode($model->psprt_given_by), 'key1');
+
+                },
+            ],
             'phone',
             'email:email',
             'cadastral_square',

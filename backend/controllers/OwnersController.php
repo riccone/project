@@ -66,13 +66,28 @@ class OwnersController extends Controller
     {
         $model = new Owners();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $data = Yii::$app->request->post();
+            $model->psprt_series = utf8_encode(Yii::$app->security->encryptByKey($data['Owners']['psprt_series'], 'key1'));
+            $model->psprt_given_by = utf8_encode(Yii::$app->security->encryptByKey($data['Owners']['psprt_given_by'], 'key1'));
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [
             'model' => $model,
         ]);
+//        $model = new Owners();
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
+//
+//        return $this->render('create', [
+//            'model' => $model,
+//        ]);
     }
 
     /**
@@ -86,13 +101,27 @@ class OwnersController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $data = Yii::$app->request->post();
+            $model->psprt_series = utf8_encode(Yii::$app->security->encryptByKey($data['Owners']['psprt_series'], 'key1'));
+            $model->psprt_given_by = utf8_encode(Yii::$app->security->encryptByKey($data['Owners']['psprt_given_by'], 'key1'));
+
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
-        return $this->render('update', [
+        return $this->render('create', [
             'model' => $model,
         ]);
+
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        }
+//
+//        return $this->render('update', [
+//            'model' => $model,
+//        ]);
     }
 
     /**

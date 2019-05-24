@@ -16,6 +16,9 @@ $items = ArrayHelper::map($user,'id','firstname');
 
 $plots = Reestr::find()->All();
 $items2 = ArrayHelper::map($plots,'id','id');
+
+$model->psprt_given_by = Yii::$app->security->decryptByKey(utf8_decode($model->psprt_given_by), 'key1');
+$model->psprt_series = Yii::$app->security->decryptByKey(utf8_decode($model->psprt_series), 'key1');
 ?>
 
 <div class="owners-form">

@@ -16,6 +16,9 @@ $items = ArrayHelper::map($user,'id','firstname');
 
 $plots = Plots::find()->All();
 $items2 = ArrayHelper::map($plots,'id','name');
+
+$model->psprt_given_by = Yii::$app->security->decryptByKey(utf8_decode($model->psprt_given_by), 'key1');
+$model->psprt_series = Yii::$app->security->decryptByKey(utf8_decode($model->psprt_series), 'key1');
 ?>
 
 <div class="reestr-form">
@@ -30,7 +33,6 @@ $items2 = ArrayHelper::map($plots,'id','name');
         ],
     ]);?>
 
-    <?= $form->field($model, 'plots_id')->textInput() ?>
 
     <?=$form->field($model, 'plots_id')->widget(Select2::classname(), [
         'data' => $items2,

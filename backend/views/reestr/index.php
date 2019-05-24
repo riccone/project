@@ -31,8 +31,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'plots_id',
             'cadastral_square',
             'cadastral_number',
-            //'psprt_series',
-            //'psprt_given_by',
+            [
+                'attribute' => 'psprt_series',
+                'value' => function ($model) {
+                    return Yii::$app->security->decryptByKey(utf8_decode($model->psprt_series), 'key1');
+
+                },
+            ],
+            [
+                'attribute' => 'psprt_given_by',
+                'value' => function ($model) {
+                    return Yii::$app->security->decryptByKey(utf8_decode($model->psprt_given_by), 'key1');
+
+                },
+            ],
             //'ownership_share',
 
             ['class' => 'yii\grid\ActionColumn'],
