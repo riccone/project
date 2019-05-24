@@ -18,6 +18,7 @@ class PlotsSearch extends Plots
     {
         return [
             [['id', 'region_id'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -60,6 +61,8 @@ class PlotsSearch extends Plots
             'id' => $this->id,
             'region_id' => $this->region_id,
         ]);
+
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

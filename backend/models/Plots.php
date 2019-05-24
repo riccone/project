@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "plots".
  *
  * @property int $id Идентификатор
+ * @property string $name Наименование
  * @property int $region_id Идентификатор региона
  *
  * @property Region $region
@@ -30,6 +31,7 @@ class Plots extends \yii\db\ActiveRecord
     {
         return [
             [['region_id'], 'integer'],
+            [['name'], 'string', 'max' => 255],
             [['region_id'], 'exist', 'skipOnError' => true, 'targetClass' => Region::className(), 'targetAttribute' => ['region_id' => 'id']],
         ];
     }
@@ -41,6 +43,7 @@ class Plots extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'name' => 'Name',
             'region_id' => 'Region ID',
         ];
     }
