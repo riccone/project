@@ -6,11 +6,7 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <?php
 
-        echo 'Encrypted: ' .$encrypted. ';    Decrypted: '.$decrypted;
-
-    ?>
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>

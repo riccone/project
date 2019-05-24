@@ -34,6 +34,7 @@
                     ['label' => 'Users', 'icon' => 'file-code-o', 'url' => ['/user']],
                     ['label' => 'Plots', 'icon' => 'dashboard', 'url' => ['/plots']],
                     ['label' => 'Owner', 'icon' => 'dashboard', 'url' => ['/owners']],
+                    ['label' => 'Reestr', 'icon' => 'dashboard', 'url' => ['/reestr']],
                     ['label' => 'Region', 'icon' => 'dashboard', 'url' => ['/region']],
                 ],
             ]
