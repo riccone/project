@@ -31,7 +31,7 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Menu', 'options' => ['class' => 'header']],
-                    ['label' => 'Users', 'icon' => 'file-code-o', 'url' => ['/user']],
+                    ['label' => 'Users', 'icon' => 'file-code-o', 'url' => ['/users']],
                     ['label' => 'Plots', 'icon' => 'dashboard', 'url' => ['/plots']],
                     ['label' => 'Owner', 'icon' => 'dashboard', 'url' => ['/owners']],
                     ['label' => 'Reestr', 'icon' => 'dashboard', 'url' => ['/reestr']],
