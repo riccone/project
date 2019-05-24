@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PlotsSearch */
+/* @var $searchModel backend\models\PlotsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Plots';
@@ -28,8 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'region_id',
-            'square',
-            'cost',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

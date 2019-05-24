@@ -17,9 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Owners', ['create'], ['class' => 'btn btn-success']) ?>  <?= Html::a('Encode db table', ['encode'], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('Create Owners', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -28,27 +27,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            [
-                'attribute' => 'plot',
-                'value' => function ($model) {
-                    return Yii::$app->security->decryptByKey(utf8_decode($model->plot), 'key1');
-
-                },
-            ],
-            [
-                'attribute' => 'user',
-                'value' => function ($model) {
-                    return Yii::$app->security->decryptByKey(utf8_decode($model->user), 'key1');
-
-                },
-            ],
-            [
-                'attribute' => 'address',
-                'value' => function ($model) {
-                    return Yii::$app->security->decryptByKey(utf8_decode($model->address), 'key1');
-
-                },
-            ],
+            'reestr_id',
+            'user_id',
+            'ownership_share',
+            'psprt_series',
+            //'psprt_given_by',
+            //'phone',
+            //'email:email',
+            //'cadastral_square',
+            //'cadastral_number',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

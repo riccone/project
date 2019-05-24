@@ -20,11 +20,23 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'plot') ?>
+    <?= $form->field($model, 'reestr_id') ?>
 
-    <?= $form->field($model, 'user') ?>
+    <?= $form->field($model, 'user_id') ?>
 
-    <?= $form->field($model, 'address') ?>
+    <?= $form->field($model, 'ownership_share') ?>
+
+    <?= $form->field($model, 'psprt_series') ?>
+
+    <?php // echo $form->field($model, 'psprt_given_by') ?>
+
+    <?php // echo $form->field($model, 'phone') ?>
+
+    <?php // echo $form->field($model, 'email') ?>
+
+    <?php // echo $form->field($model, 'cadastral_square') ?>
+
+    <?php // echo $form->field($model, 'cadastral_number') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

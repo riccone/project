@@ -30,15 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'plot',
-            'user',
-            [
-                'attribute' => 'address',
-                'value' => function ($model) {
-                    return Yii::$app->security->decryptByKey(utf8_decode($model->address), 'key1');
-
-                },
-            ],
+            'reestr_id',
+            'user_id',
+            'ownership_share',
+            'psprt_series',
+            'psprt_given_by',
+            'phone',
+            'email:email',
+            'cadastral_square',
+            'cadastral_number',
         ],
     ]) ?>
 
