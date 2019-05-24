@@ -1,20 +1,42 @@
 <?php
 
+use backend\models\Reestr;
+use backend\models\Users;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Owners */
 /* @var $form yii\widgets\ActiveForm */
+
+$user = Users::find()->All();
+$items = ArrayHelper::map($user,'id','firstname');
+
+$plots = Reestr::find()->All();
+$items2 = ArrayHelper::map($plots,'id','id');
 ?>
 
 <div class="owners-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'reestr_id')->textInput() ?>
+    <?=$form->field($model, 'reestr_id')->widget(Select2::classname(), [
+        'data' => $items2,
+        'options' => ['placeholder' => 'Выберите реестра'],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ]);?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?=$form->field($model, 'user_id')->widget(Select2::classname(), [
+        'data' => $items,
+        'options' => ['placeholder' => 'Выберите пользователья'],
+        'pluginOptions' => [
+            'allowClear' => true,
+        ],
+    ]);?>
 
     <?= $form->field($model, 'ownership_share')->textInput() ?>
 
