@@ -90,6 +90,24 @@ class OwnersController extends Controller
 //        ]);
     }
 
+    public function actionEncode(){
+        $owners = Owners::find()->all();//Owners::findAll(['status' => 1]);
+        foreach ($owners as $ow) {
+            $this->encode($ow->id, $ow->psprt_series, $ow->psprt_given_by);
+        }
+        return $this->redirect(['index']);
+    }
+
+    public function encode($id, $psprt_series, $psprt_given_by){
+        return Owners::updateAll(
+            [
+                'psprt_series' => utf8_encode(Yii::$app->security->encryptByKey($psprt_series, 'key1')),
+                'psprt_given_by' => utf8_encode(Yii::$app->security->encryptByKey($psprt_given_by, 'key1')),
+            ],
+            ['id' => $id]
+        );
+    }
+
     /**
      * Updates an existing Owners model.
      * If update is successful, the browser will be redirected to the 'view' page.

@@ -90,6 +90,24 @@ class ReestrController extends Controller
 //        ]);
     }
 
+    public function actionEncode(){
+        $reestr = Reestr::find()->all();//Reestr::findAll(['status' => 1]);
+        foreach ($reestr as $re) {
+            $this->encode($re->id, $re->psprt_series, $re->psprt_given_by);
+        }
+        return $this->redirect(['index']);
+    }
+
+    public function encode($id, $psprt_series, $psprt_given_by){
+        return Reestr::updateAll(
+            [
+                'psprt_series' => utf8_encode(Yii::$app->security->encryptByKey($psprt_series, 'key1')),
+                'psprt_given_by' => utf8_encode(Yii::$app->security->encryptByKey($psprt_given_by, 'key1')),
+            ],
+            ['id' => $id]
+        );
+    }
+
     /**
      * Updates an existing Reestr model.
      * If update is successful, the browser will be redirected to the 'view' page.
