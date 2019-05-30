@@ -20,15 +20,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'reestr_id') ?>
-
     <?= $form->field($model, 'user_id') ?>
 
     <?= $form->field($model, 'ownership_share') ?>
 
     <?= $form->field($model, 'psprt_series') ?>
 
-    <?php // echo $form->field($model, 'psprt_given_by') ?>
+    <?= $form->field($model, 'psprt_given_by') ?>
 
     <?php // echo $form->field($model, 'phone') ?>
 
@@ -37,6 +35,10 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'cadastral_square') ?>
 
     <?php // echo $form->field($model, 'cadastral_number') ?>
+
+    <?php // echo $form->field($model, 'plots_id') ?>
+
+    <?php // echo $form->field($model, 'role') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

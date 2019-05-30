@@ -1,6 +1,6 @@
 <?php
 
-use backend\models\Reestr;
+use backend\models\Plots;
 use backend\models\Users;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -14,8 +14,8 @@ use kartik\select2\Select2;
 $user = Users::find()->All();
 $items = ArrayHelper::map($user,'id','firstname');
 
-$plots = Reestr::find()->All();
-$items2 = ArrayHelper::map($plots,'id','id');
+$plots = Plots::find()->All();
+$items2 = ArrayHelper::map($plots,'id','name');
 
 $model->psprt_given_by = Yii::$app->security->decryptByKey(utf8_decode($model->psprt_given_by), 'key1');
 $model->psprt_series = Yii::$app->security->decryptByKey(utf8_decode($model->psprt_series), 'key1');
@@ -25,17 +25,17 @@ $model->psprt_series = Yii::$app->security->decryptByKey(utf8_decode($model->psp
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?=$form->field($model, 'reestr_id')->widget(Select2::classname(), [
-        'data' => $items2,
-        'options' => ['placeholder' => 'Выберите реестра'],
+    <?=$form->field($model, 'user_id')->widget(Select2::classname(), [
+        'data' => $items,
+        'options' => ['placeholder' => 'Выберите пользователья'],
         'pluginOptions' => [
             'allowClear' => true,
         ],
     ]);?>
 
-    <?=$form->field($model, 'user_id')->widget(Select2::classname(), [
-        'data' => $items,
-        'options' => ['placeholder' => 'Выберите пользователья'],
+    <?=$form->field($model, 'plots_id')->widget(Select2::classname(), [
+        'data' => $items2,
+        'options' => ['placeholder' => 'Выберите участок'],
         'pluginOptions' => [
             'allowClear' => true,
         ],
@@ -54,6 +54,8 @@ $model->psprt_series = Yii::$app->security->decryptByKey(utf8_decode($model->psp
     <?= $form->field($model, 'cadastral_square')->textInput() ?>
 
     <?= $form->field($model, 'cadastral_number')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'role')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

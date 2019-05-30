@@ -17,7 +17,7 @@ class OwnersSearch extends Owners
     public function rules()
     {
         return [
-            [['id', 'reestr_id', 'user_id'], 'integer'],
+            [['id', 'user_id', 'plots_id', 'role'], 'integer'],
             [['ownership_share', 'cadastral_square'], 'number'],
             [['psprt_series', 'psprt_given_by', 'phone', 'email', 'cadastral_number'], 'safe'],
         ];
@@ -60,10 +60,11 @@ class OwnersSearch extends Owners
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'reestr_id' => $this->reestr_id,
             'user_id' => $this->user_id,
             'ownership_share' => $this->ownership_share,
             'cadastral_square' => $this->cadastral_square,
+            'plots_id' => $this->plots_id,
+            'role' => $this->role,
         ]);
 
         $query->andFilterWhere(['like', 'psprt_series', $this->psprt_series])

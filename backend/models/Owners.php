@@ -8,7 +8,6 @@ use Yii;
  * This is the model class for table "owners".
  *
  * @property int $id Идентификатор
- * @property int $reestr_id Идентификатор реестра
  * @property int $user_id Идентификатор пользователя
  * @property double $ownership_share Доля собственности
  * @property string $psprt_series Серия паспорта
@@ -17,8 +16,10 @@ use Yii;
  * @property string $email Электронная почта
  * @property double $cadastral_square Кадастровая площадь
  * @property string $cadastral_number Кадастровый номер
+ * @property int $plots_id Идентификатор участка
+ * @property int $role
  *
- * @property Reestr $reestr
+ * @property Plots $plots
  * @property Users $user
  */
 class Owners extends \yii\db\ActiveRecord
@@ -37,10 +38,10 @@ class Owners extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['reestr_id', 'user_id'], 'integer'],
+            [['user_id', 'plots_id', 'role'], 'integer'],
             [['ownership_share', 'cadastral_square'], 'number'],
             [['psprt_series', 'psprt_given_by', 'phone', 'email', 'cadastral_number'], 'string', 'max' => 255],
-            [['reestr_id'], 'exist', 'skipOnError' => true, 'targetClass' => Reestr::className(), 'targetAttribute' => ['reestr_id' => 'id']],
+            [['plots_id'], 'exist', 'skipOnError' => true, 'targetClass' => Plots::className(), 'targetAttribute' => ['plots_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -52,7 +53,6 @@ class Owners extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'reestr_id' => 'Reestr ID',
             'user_id' => 'User ID',
             'ownership_share' => 'Ownership Share',
             'psprt_series' => 'Psprt Series',
@@ -61,15 +61,17 @@ class Owners extends \yii\db\ActiveRecord
             'email' => 'Email',
             'cadastral_square' => 'Cadastral Square',
             'cadastral_number' => 'Cadastral Number',
+            'plots_id' => 'Plots ID',
+            'role' => 'Role',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getReestr()
+    public function getPlots()
     {
-        return $this->hasOne(Reestr::className(), ['id' => 'reestr_id']);
+        return $this->hasOne(Plots::className(), ['id' => 'plots_id']);
     }
 
     /**

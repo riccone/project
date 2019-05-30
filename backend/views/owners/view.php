@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'reestr_id',
             'user_id',
             'ownership_share',
             [
@@ -51,6 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'cadastral_square',
             'cadastral_number',
+            'plots_id',
+            'role',
         ],
     ]) ?>
 

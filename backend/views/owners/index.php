@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Owners', ['create'], ['class' => 'btn btn-success']) ?>  <?= Html::a('Encode db table', ['encode'], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('Create Owners', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,7 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'reestr_id',
             'user_id',
             'ownership_share',
             [
@@ -48,6 +47,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'email:email',
             //'cadastral_square',
             //'cadastral_number',
+            //'plots_id',
+            //'role',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

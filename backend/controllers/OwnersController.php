@@ -79,15 +79,6 @@ class OwnersController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-//        $model = new Owners();
-//
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        }
-//
-//        return $this->render('create', [
-//            'model' => $model,
-//        ]);
     }
 
     public function actionEncode(){
@@ -132,14 +123,6 @@ class OwnersController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
-
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        }
-//
-//        return $this->render('update', [
-//            'model' => $model,
-//        ]);
     }
 
     /**
